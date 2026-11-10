@@ -1,0 +1,157 @@
+{
+  "info": {
+    "name": "EventSphere REST API Collection",
+    "_postman_id": "c8a41154-f582-4fa1-8292-eventsphere-team19",
+    "description": "Comprehensive REST API collection for EventSphere - Campus Event Discovery, Registration & Verification Portal (Team 19, CSE-B).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "System Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "List Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/users",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "users"]
+        }
+      }
+    },
+    {
+      "name": "List Events with Live Seat Pulse",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/events?category=Technical&search=",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "events"],
+          "query": [
+            { "key": "category", "value": "Technical" },
+            { "key": "search", "value": "" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Event Details by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/events/1?user_id=1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "events", "1"],
+          "query": [{ "key": "user_id", "value": "1" }]
+        }
+      }
+    },
+    {
+      "name": "Register for Event (Capacity & Clash Check)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": 1,\n  \"override_conflict\": false\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/events/1/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "events", "1", "register"]
+        }
+      }
+    },
+    {
+      "name": "Join Waitlist (Event Full)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": 1\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/events/4/waitlist",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "events", "4", "waitlist"]
+        }
+      }
+    },
+    {
+      "name": "Cancel Registration (Smart Seat Release)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": 1\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/registrations/1/cancel",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "registrations", "1", "cancel"]
+        }
+      }
+    },
+    {
+      "name": "QuickCheck QR Verification Scan",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"token\": \"ES-2611-HACK01\",\n  \"organizer_id\": 8,\n  \"event_id\": 1\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/checkin/verify",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "checkin", "verify"]
+        }
+      }
+    },
+    {
+      "name": "Get User Event Passport",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/users/1/passport",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "users", "1", "passport"]
+        }
+      }
+    },
+    {
+      "name": "Get Organizer Dashboard Analytics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/organizer/analytics",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "organizer", "analytics"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:5050"
+    }
+  ]
+}
